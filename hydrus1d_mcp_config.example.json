@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "hydrus1d": {
+      "command": "python",
+      "args": [
+        "C:\\path\\to\\hydrus1d\\hydrus1d_mcp_server.py",
+        "--install-dir",
+        "C:\\Program Files (x86)\\PC-Progress\\Hydrus-1D 4.xx",
+        "--project-root",
+        "C:\\path\\to\\your\\hydrus-project-root"
+      ]
+    }
+  }
+}

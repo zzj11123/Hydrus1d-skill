@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "hydrus1d": {
+      "command": "python",
+      "args": [
+        "hydrus1d_mcp_server.py"
+      ],
+      "env": {
+        "HYDRUS1D_INSTALL_DIR": "",
+        "HYDRUS1D_PROJECT_ROOTS": ""
+      }
+    }
+  }
+}

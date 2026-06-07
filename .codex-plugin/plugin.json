@@ -1,0 +1,36 @@
+{
+  "name": "hydrus1d",
+  "version": "0.1.0",
+  "description": "Codex plugin and MCP server for HYDRUS-1D water flow and solute transport workflows.",
+  "author": {
+    "name": "Hydrus1D Codex Plugin Maintainers"
+  },
+  "license": "MIT",
+  "keywords": [
+    "hydrus",
+    "hydrus-1d",
+    "mcp",
+    "soil-water",
+    "solute-transport"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "HYDRUS-1D",
+    "shortDescription": "Run and analyze HYDRUS-1D water and solute projects.",
+    "longDescription": "Provides a local MCP server and Codex skill for inspecting, running, validating, calibrating, and interpreting HYDRUS-1D water flow and salinity/solute transport simulations.",
+    "developerName": "Hydrus1D Codex Plugin Maintainers",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "brandColor": "#2563EB",
+    "defaultPrompt": [
+      "Analyze a HYDRUS-1D project.",
+      "Run HYDRUS-1D and summarize outputs.",
+      "Validate HYDRUS observation data."
+    ]
+  }
+}
