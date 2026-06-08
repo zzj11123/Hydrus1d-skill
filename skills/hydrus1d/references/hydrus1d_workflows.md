@@ -41,6 +41,28 @@ After running, verify:
 - `Balance.out` final time matches the requested simulation end.
 - water-balance error is small enough for the use case.
 
+## ATMOSPH.IN Workflow
+
+Use this workflow before reading, creating, or modifying atmospheric boundary data.
+
+1. Read `SELECTOR.IN` and identify options that affect atmospheric inputs.
+2. Read the actual `ATMOSPH.IN` header and table layout from the current project.
+3. Infer the column mapping from the current project format instead of using a fixed script-level schema.
+4. Check that the inferred mapping is consistent with the HYDRUS-1D GUI for this project's active options.
+5. Before writing, explicitly document the intended columns for:
+   - time
+   - precipitation or irrigation
+   - evaporation
+   - transpiration
+   - `potET`
+   - `LAI`
+   - active solute or root-related atmospheric inputs
+6. If `potET` or `LAI` cannot be mapped unambiguously, stop and ask for confirmation or a GUI-exported/template file.
+7. After writing, re-read `ATMOSPH.IN` and verify that `potET` and `LAI` values are in the intended columns.
+8. Include the verified column mapping and sample modified rows in the final report.
+
+Do not treat `ATMOSPH.IN` column meanings as globally fixed across HYDRUS-1D projects.
+
 ## Water Result Analysis
 
 Report:
