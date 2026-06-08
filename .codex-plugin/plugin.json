@@ -1,6 +1,6 @@
 {
   "name": "hydrus1d",
-  "version": "0.1.0",
+  "version": "0.1.0+codex.20260608033226",
   "description": "Codex plugin and MCP server for HYDRUS-1D water flow and solute transport workflows.",
   "author": {
     "name": "Hydrus1D Codex Plugin Maintainers"
