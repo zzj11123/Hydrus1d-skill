@@ -11,9 +11,33 @@ Use this skill for HYDRUS-1D workflows involving water flow, salinity, or solute
 
 - Default report language is Chinese. Keep HYDRUS file names, variable names, and units in English.
 - Treat the original HYDRUS project as read-only during calibration or scenario testing. Copy the project first, then modify the copy.
+- When creating, copying, or deriving a HYDRUS project, update the project description immediately after changing the scenario. Do not leave copied descriptions that no longer match the project.
 - Do not invent calibration bounds. Ask the user for the parameter names and lower/upper bounds before running parameter searches.
 - For coupled water and solute projects, calibrate water-flow parameters first, then solute/salinity parameters, unless the user explicitly requests joint calibration.
 - Use structured evidence from files and outputs. Do not judge success from stdout alone.
+
+## Project Creation And Scenario Metadata
+
+When a task involves creating a new project, copying a project, renaming a project, or modifying a project into a new scenario:
+
+1. Copy the base project first unless the user explicitly asks to edit the original.
+2. Change the requested model inputs.
+3. Update the project description files and fields that are present in the copied project, especially `DESCRIPT.TXT` and any title/heading/description text in HYDRUS project metadata files.
+4. The description must reflect the actual scenario, not just the source project. Include the important changes such as:
+   - project purpose
+   - base project name
+   - soil profile depth and discretization changes
+   - water-flow boundary or initial-condition changes
+   - solute/salinity settings, number of solutes, input concentration, pulse time, adsorption/reaction settings
+   - parameters intentionally kept the same as the base project
+   - date or short scenario tag when useful
+5. Before running the new project, re-read the updated description and confirm it is consistent with `SELECTOR.IN`, `PROFILE.DAT`, and other modified files.
+
+Example description for a derived project:
+
+```text
+Ponded_infiltr_test1: derived from Ponded_infiltr. Soil profile depth changed from 100 cm to 200 cm; original hydraulic parameters and boundary conditions retained unless otherwise noted.
+```
 
 ## Project Workflow
 
