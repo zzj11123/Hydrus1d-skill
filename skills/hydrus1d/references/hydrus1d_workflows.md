@@ -11,6 +11,24 @@
 5. Read `PROFILE.DAT` for depth, nodes, observation nodes, initial pressure head/concentration, material and layer layout.
 6. Read `ATMOSPH.IN` if atmospheric boundary conditions are active.
 
+## Scenario Or Derived Project Creation
+
+Use this workflow when creating a new HYDRUS-1D project, copying an existing project for a new scenario, or changing a copied project.
+
+1. Copy the base project and keep the original unchanged.
+2. Apply the requested scenario edits, such as profile depth, boundary conditions, hydraulic parameters, solute parameters, observation nodes, or time settings.
+3. Update `DESCRIPT.TXT` and any available project title, heading, or description metadata in the copied project.
+4. The description must explicitly state:
+   - the new scenario purpose
+   - the base project name
+   - the main differences from the base project
+   - which major parameters were intentionally retained
+   - water and solute/salinity settings when relevant
+5. Re-read the edited description and main input files before running.
+6. In the final report, state both the project path and the updated description.
+
+Do not leave descriptions that refer to the original project when the copied project has been changed.
+
 ## Running a Model
 
 Use `mcp__hydrus1d.run_model` with `mode="auto"`.
