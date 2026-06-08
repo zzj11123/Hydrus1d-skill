@@ -15,6 +15,7 @@ Use this skill for HYDRUS-1D workflows involving water flow, salinity, or solute
 - Do not invent calibration bounds. Ask the user for the parameter names and lower/upper bounds before running parameter searches.
 - For coupled water and solute projects, calibrate water-flow parameters first, then solute/salinity parameters, unless the user explicitly requests joint calibration.
 - Use structured evidence from files and outputs. Do not judge success from stdout alone.
+- Never assume fixed `ATMOSPH.IN` column positions. Atmospheric-boundary column meanings must be inferred from the current project's `SELECTOR.IN`, `ATMOSPH.IN` structure, and consistency with the HYDRUS-1D GUI for that project.
 
 ## Project Creation And Scenario Metadata
 
@@ -54,6 +55,18 @@ Ponded_infiltr_test1: derived from Ponded_infiltr. Soil profile depth changed fr
    - `Run_Inf.out`: final convergence flag and iteration history.
    - `Balance.out`: final time, water-balance error, storage, top/bottom flux.
    - `solute*.out`: concentration transport outputs when `lChem = t`.
+
+## ATMOSPH.IN Editing Rules
+
+When reading or modifying atmospheric boundary data:
+
+1. Do not use a hard-coded column map for `ATMOSPH.IN`.
+2. Determine the active atmospheric format from the current project by reading `SELECTOR.IN` flags and the actual `ATMOSPH.IN` header/table layout.
+3. Cross-check the inferred columns against HYDRUS-1D GUI expectations for the same project setup. Column availability and meaning can change with options such as atmospheric boundary conditions, root water uptake, precipitation/evaporation inputs, variable boundary settings, and plant-growth options.
+4. Before writing, produce an explicit column mapping for the current file, including the columns intended for `potET`, `LAI`, precipitation/irrigation, evaporation, transpiration, and any active solute or root-related atmospheric inputs.
+5. If the mapping for `potET` or `LAI` is ambiguous, stop and ask the user to confirm the HYDRUS GUI column mapping or provide an exported/template `ATMOSPH.IN`.
+6. After writing, re-read `ATMOSPH.IN` and verify that `potET` and `LAI` values actually landed in their intended columns. Do not rely on row length or script assumptions alone.
+7. Report the verified column indexes/names and sample rows after modification.
 
 ## Observation Data
 
